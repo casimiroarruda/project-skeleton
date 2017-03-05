@@ -1,0 +1,25 @@
+{
+  "name": "duodraco/project-skeleton",
+  "description": "Dummy PHP Project Skeleton based upon Symfony Microkernel + PDS/Skeleton (Teaching Purposes)",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Casimiro",
+      "email": "duodraco@gmail.com"
+    }
+  ],
+  "require": {
+    "php":"^7.0",
+    "symfony/symfony": "^3.2",
+    "sensio/framework-extra-bundle": "^3.0"
+  },
+  "require-dev": {
+    "pds/skeleton": "^1.0"
+  },
+  "autoload":{
+    "psr-4":{
+      "Duodraco\\":"src/Duodraco"
+    }
+  }
+}
