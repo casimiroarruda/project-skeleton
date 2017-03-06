@@ -1,0 +1,7 @@
+index:
+  path: '/'
+  defaults:
+    _controller: 'Duodraco\Command\Main::go'
+    service: 'Duodraco\Service\PeopleProvider'
+  requirements: { }
+  methods: [GET]
