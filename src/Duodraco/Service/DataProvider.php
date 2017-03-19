@@ -3,7 +3,7 @@ namespace Duodraco\Service;
 
 use Duodraco\Foundation\Command\Service;
 
-class PeopleProvider extends Service
+class DataProvider extends Service
 {
     public function peopleToFollow(): array
     {
@@ -13,5 +13,10 @@ class PeopleProvider extends Service
             "@abdala" => "Abdala Cerqueira",
             "@dianaarnos" => "Diana Arnos"
         ];
+    }
+
+    public function getPHPVersion(): string
+    {
+        return PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;
     }
 }
