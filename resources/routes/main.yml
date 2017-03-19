@@ -2,6 +2,14 @@ index:
   path: '/'
   defaults:
     _controller: 'Duodraco\Command\Main::go'
-    service: 'Duodraco\Service\PeopleProvider'
+    service: 'Duodraco\Service\DataProvider'
+  requirements: { }
+  methods: [GET]
+
+phpversion:
+  path: '/phpversion'
+  defaults:
+    _controller: 'Duodraco\Command\Version::go'
+    service: 'Duodraco\Service\DataProvider'
   requirements: { }
   methods: [GET]
