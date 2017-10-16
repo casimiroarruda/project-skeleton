@@ -2,6 +2,7 @@
 
 namespace Duodraco\Foundation;
 
+use League\Tactician\Bundle\TacticianBundle;
 use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -18,7 +19,8 @@ class Kernel extends HttpKernel
     {
         $bundles = [
             new FrameworkBundle(),
-            new SensioFrameworkExtraBundle()
+            new SensioFrameworkExtraBundle(),
+            new TacticianBundle()
         ];
         return $bundles;
     }

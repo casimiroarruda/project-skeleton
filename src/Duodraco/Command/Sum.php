@@ -15,9 +15,8 @@ class Sum extends Command
      */
     public function __invoke(Request $request, array $attributes = []): Response
     {
-        $a = $request->get('a');
-        $b = $request->get('b');
-        $response = $this->service->sum($a, $b);
+        $this->request = $request;
+        $response = $this->commandBus->handle($this);
         return new JsonResponse($response);
     }
 }

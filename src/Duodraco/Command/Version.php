@@ -14,7 +14,7 @@ class Version extends Command
      */
     public function __invoke(Request $request, array $attributes = []): Response
     {
-        $response = $this->service->getPHPVersion();
+        $response = $this->commandBus->handle($this);
         return new JsonResponse($response);
     }
 }
