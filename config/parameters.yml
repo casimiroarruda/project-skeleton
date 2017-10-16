@@ -1,0 +1,3 @@
+parameters:
+  app.basepath: !php/const:BASE_PATH
+  database.dsn: 'sqlite:%app.basepath%/resources/skeleton.sqlite'

@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  PDO:
+    class: \PDO
+    arguments: ['%database.dsn%']
+  Duodraco\Service\PeopleRepository:
+    arguments: ['@PDO']
+  Duodraco\Service\System:
+  Duodraco\Command\Main:
+    arguments: ['@Duodraco\Service\PeopleRepository']
+  Duodraco\Command\:
+    resource: '../src/Duodraco/Command/{Sum,Version}.php'
+    arguments: ['@Duodraco\Service\System']

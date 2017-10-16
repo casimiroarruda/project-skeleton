@@ -1,4 +1,5 @@
 <?php
+
 namespace Duodraco\Command;
 
 use Duodraco\Foundation\Command\Command;
@@ -7,14 +8,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Version extends Command
+class Sum extends Command
 {
     /**
-     * @Route("/version")
+     * @Route("/sum/{a}/{b}",requirements={"a" = "\d+","b" = "\d+"})
      */
     public function __invoke(Request $request, array $attributes = []): Response
     {
-        $response = $this->service->getPHPVersion();
+        $a = $request->get('a');
+        $b = $request->get('b');
+        $response = $this->service->sum($a, $b);
         return new JsonResponse($response);
     }
 }

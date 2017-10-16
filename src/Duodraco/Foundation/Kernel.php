@@ -1,4 +1,5 @@
 <?php
+
 namespace Duodraco\Foundation;
 
 use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
@@ -13,7 +14,7 @@ class Kernel extends HttpKernel
 {
     use MicroKernelTrait;
 
-    public function registerBundles()
+    public function registerBundles(): array
     {
         $bundles = [
             new FrameworkBundle(),
@@ -29,7 +30,11 @@ class Kernel extends HttpKernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        $routes->import(BASE_PATH . '/resources/routes/main.yml');
+        $routes->import(
+            BASE_PATH . '/src/Duodraco/Command/',
+            '/',
+            'annotation'
+        );
     }
 
     public function getCacheDir()
