@@ -1,0 +1,23 @@
+services:
+  PDO:
+    class: \PDO
+    arguments: ['%database.dsn%']
+  Duodraco\Service\PeopleRepository:
+    arguments: ['@PDO']
+  Duodraco\Service\System:
+  Duodraco\Command\:
+    resource: '../src/Duodraco/Command/*'
+    arguments: ['@tactician.commandbus']
+  Duodraco\Handler\People:
+    arguments: ['@Duodraco\Service\PeopleRepository']
+    tags:
+      - {name: tactician.handler, command: Duodraco\Command\Main}
+  Duodraco\Handler\Sum:
+    arguments: ['@Duodraco\Service\System']
+    tags:
+      - {name: tactician.handler, command: Duodraco\Command\Sum}
+  Duodraco\Handler\Version:
+    arguments: ['@Duodraco\Service\System']
+    tags:
+      - {name: tactician.handler, command: Duodraco\Command\Version}
+

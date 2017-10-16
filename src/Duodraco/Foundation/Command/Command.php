@@ -1,32 +1,25 @@
 <?php
+
 namespace Duodraco\Foundation\Command;
 
+use League\Tactician\CommandBus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class Command extends Controller
 {
-    /**
-     * @var Service
-     */
-    protected $service;
+    protected $commandBus;
+    protected $request;
 
-    final public function go(Request $request, array $attributes = []) : Response
+    public function __construct(CommandBus $commandBus)
     {
-        $this->service = $this->buildService($request->attributes->get("service"));
-        return $this->execute($request, $attributes);
+        $this->commandBus = $commandBus;
     }
 
-    protected function buildService(string $serviceName): Service
+    public function getRequest():Request
     {
-        $reflectionClass = new \ReflectionClass($serviceName);
-        $service = $reflectionClass->newInstanceArgs([$this->container]);
-        if($service instanceof Service){
-            return $service;
-        }
-        throw new \Exception("Service not configured");
+        return $this->request;
     }
-
-    abstract public function execute(Request $request, array $attributes): Response;
+    abstract public function __invoke(Request $request, array $attributes = []): Response;
 }

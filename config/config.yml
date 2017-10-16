@@ -1,2 +1,5 @@
 framework:
     secret: ItsAK1nd0fM@gik...
+imports:
+  - {resource: parameters.yml}
+  - {resource: services.yml}

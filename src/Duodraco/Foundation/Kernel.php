@@ -1,6 +1,8 @@
 <?php
+
 namespace Duodraco\Foundation;
 
+use League\Tactician\Bundle\TacticianBundle;
 use Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -13,11 +15,12 @@ class Kernel extends HttpKernel
 {
     use MicroKernelTrait;
 
-    public function registerBundles()
+    public function registerBundles(): array
     {
         $bundles = [
             new FrameworkBundle(),
-            new SensioFrameworkExtraBundle()
+            new SensioFrameworkExtraBundle(),
+            new TacticianBundle()
         ];
         return $bundles;
     }
@@ -29,7 +32,11 @@ class Kernel extends HttpKernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        $routes->import(BASE_PATH . '/resources/routes/main.yml');
+        $routes->import(
+            BASE_PATH . '/src/Duodraco/Command/',
+            '/',
+            'annotation'
+        );
     }
 
     public function getCacheDir()
