@@ -21,5 +21,6 @@ abstract class Command extends Controller
     {
         return $this->request;
     }
+
     abstract public function __invoke(Request $request, array $attributes = []): Response;
 }
