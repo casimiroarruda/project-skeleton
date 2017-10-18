@@ -2,9 +2,7 @@
 
 namespace Duodraco\Handler;
 
-use Duodraco\Foundation\Command\Command;
-use Duodraco\Foundation\Command\Handler;
-use Duodraco\Foundation\Command\Message;
+use Duodraco\Foundation\Command\{Command, Handler, Message};
 use Duodraco\Service\PeopleRepository;
 
 class People implements Handler
