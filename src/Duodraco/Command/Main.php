@@ -16,7 +16,6 @@ class Main extends Command
     public function __invoke(Request $request, array $attributes = []): Response
     {
         $response = $this->service->findBeloved();
-        $headers = ['Content-type' => 'application/json;charset=utf-8'];
-        return new JsonResponse($response, 200, $headers);
+        return new JsonResponse($response);
     }
 }
